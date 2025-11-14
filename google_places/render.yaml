@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: hotels-scrap-api
+    env: python
+    plan: free
+    rootDir: google_places
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn wsgi:application --bind 0.0.0.0:$PORT --timeout 120 --workers 1
+    envVars:
+      - key: DEBUG
+        value: False
+      - key: SECRET_KEY
+        generateValue: true
+      - key: GOOGLE_PLACES_API_KEY
+        sync: false
