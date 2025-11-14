@@ -1,7 +1,6 @@
 from django.urls import path
 from django.http import HttpResponse
-import views
-import health
+from . import views, health
 import os
 
 def hotel_map_home(request):
@@ -10,15 +9,15 @@ def hotel_map_home(request):
         print(f"DEBUG: Attempting to serve hotel_map.html")
         print(f"DEBUG: Current working directory: {os.getcwd()}")
         print(f"DEBUG: __file__ directory: {os.path.dirname(__file__)}")
-        
+
         # Read the hotel_map.html file
         file_path = os.path.join(os.path.dirname(__file__), 'hotel_map.html')
         print(f"DEBUG: Trying to read file at: {file_path}")
         print(f"DEBUG: File exists: {os.path.exists(file_path)}")
-        
+
         with open(file_path, 'r', encoding='utf-8') as f:
             html_content = f.read()
-        
+
         print(f"DEBUG: Successfully read {len(html_content)} characters")
         return HttpResponse(html_content, content_type='text/html')
     except FileNotFoundError as e:
