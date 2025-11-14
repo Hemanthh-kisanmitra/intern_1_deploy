@@ -16,6 +16,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '*.onrender.com',
+    'intern-1-deploy.onrender.com'
 ]
 
 # Add any custom domains from environment variable
